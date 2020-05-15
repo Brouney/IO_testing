@@ -24,14 +24,12 @@ class testDEBUG(unittest.TestCase):
 
     def testGetdebate(self):
         r = requests.get('http://77.55.192.26:2137/debug/debate')
-        text = "Sala3"
-        
-        sala = ""
+        tmp = True
         for t in r.json():
             if t["id"] == 2:
-                sala =  t["location"]
+                tmp = False
                 break;
-        self.assertEqual(text,sala)
+        self.assertEqual(tmp,True)
 
     def testStatusCodeGetPhase(self):
         r = requests.get('http://77.55.192.26:2137/debug/phase')
@@ -40,13 +38,12 @@ class testDEBUG(unittest.TestCase):
 
     def testGetPhase(self):
         r = requests.get('http://77.55.192.26:2137/debug/phase')
-        text = "faza pierwsza"
-        name = ""
+        tmp = True
         for t in r.json():
             if t["id"] == 1:
-                name =  t["name"]
+                tmp = False
                 break;
-        self.assertEqual(text,name)
+        self.assertEqual(tmp,True)
 
     def testStatusCodeGetTable(self):
         r = requests.get('http://77.55.192.26:2137/debug/tables')
